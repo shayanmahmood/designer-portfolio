@@ -15,7 +15,7 @@ var cursor = document.createElement("div");
 cursor.style.width = "10px";
 cursor.style.height = "10px";
 cursor.style.border = "1px solid #fff";
-cursor.style.background = "#fff";
+cursor.style.background = "#3e60c1";
 cursor.style.borderRadius = "50%";
 cursor.style.position = "absolute";
 body = document.getElementsByTagName("body")[0];
@@ -32,14 +32,29 @@ body = document.getElementsByTagName("body")[0];
 body.appendChild(cursorFllw);
 
 document.addEventListener("mousemove", (e) => {
-	
-	cursor.style.top = (e.clientY - 5) + "px";
-	cursor.style.left = (e.clientX - 5) + "px";
-	
-	cursorFllw.style.top = (e.clientY - 25) + "px";
-	cursorFllw.style.left = (e.clientX - 25) + "px";
-	
+
+    cursor.style.top = (e.clientY - 5) + "px";
+    cursor.style.left = (e.clientX - 5) + "px";
+
+    cursorFllw.style.top = (e.clientY - 25) + "px";
+    cursorFllw.style.left = (e.clientX - 25) + "px";
+
 });
+
+// window.addEventListener('mouseover', () => {
+//     cursorFllw.style.width = '100px';
+//     cursorFllw.style.height = '100px';
+//     cursorFllw.style.background = '#c92d6980';
+// });
+
+var e = document.querySelectorAll('.hoverr')
+e.forEach(btn => btn.addEventListener('mouseover', () => {
+    cursorFllw.style.width = '100px';
+    cursorFllw.style.height = '100px';
+    cursorFllw.style.background = '#c92d6980';
+    console.log(btn);
+}
+));
 
 
 
@@ -47,66 +62,66 @@ const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ$@#%*&()";
 
 let interval = null;
 
-document.querySelector("h1").onmouseover = event => {  
-  let iteration = 0;
-  
-  clearInterval(interval);
-  
-  interval = setInterval(() => {
-    event.target.innerText = event.target.innerText
-      .split("")
-      .map((letter, index) => {
-        if(index < iteration) {
-          return event.target.dataset.value[index];
+document.querySelector("h1").onmouseover = event => {
+    let iteration = 0;
+
+    clearInterval(interval);
+
+    interval = setInterval(() => {
+        event.target.innerText = event.target.innerText
+            .split("")
+            .map((letter, index) => {
+                if (index < iteration) {
+                    return event.target.dataset.value[index];
+                }
+
+                return letters[Math.floor(Math.random() * 26)]
+            })
+            .join("");
+
+        if (iteration >= event.target.dataset.value.length) {
+            clearInterval(interval);
         }
-      
-        return letters[Math.floor(Math.random() * 26)]
-      })
-      .join("");
-    
-    if(iteration >= event.target.dataset.value.length){ 
-      clearInterval(interval);
-    }
-    
-    iteration += 1 / 3;
-  }, 30);
+
+        iteration += 1 / 3;
+    }, 30);
 }
 
 
 
 
 
-$(document).ready(function(){
-    $(window).scroll(function(){
+$(document).ready(function () {
+    $(window).scroll(function () {
         // sticky navbar on scroll script
-        if(this.scrollY > 20){
+        if (this.scrollY > 20) {
             $('.navbar').addClass("sticky");
-        }else{
+        } else {
             $('.navbar').removeClass("sticky");
         }
-        
+
         // scroll-up button show/hide script
-        if(this.scrollY > 500){
+        if (this.scrollY > 500) {
             $('.scroll-up-btn').addClass("show");
-        }else{
+        } else {
             $('.scroll-up-btn').removeClass("show");
         }
     });
 
     // slide-up script
-    $('.scroll-up-btn').click(function(){
-        $('html').animate({scrollTop: 0});
+    $('.scroll-up-btn').click(function () {
+        $('html').animate({ scrollTop: 0 });
         // removing smooth scroll on slide-up button click
         $('html').css("scrollBehavior", "auto");
     });
 
-    $('.navbar .menu li a').click(function(){
+    $('.navbar .menu li a').click(function () {
         // applying again smooth scroll on menu items click
         $('html').css("scrollBehavior", "smooth");
     });
 
     // toggle menu/navbar script
-    $('.menu-btn').click(function(){
+    $('.menu-btn').click(function () {
         $('.navbar .menu').toggleClass("active");
         $('.menu-btn i').toggleClass("active");
     });
@@ -134,15 +149,15 @@ $(document).ready(function(){
         autoplayTimeOut: 2000,
         autoplayHoverPause: true,
         responsive: {
-            0:{
+            0: {
                 items: 1,
                 nav: false
             },
-            600:{
+            600: {
                 items: 2,
                 nav: false
             },
-            1000:{
+            1000: {
                 items: 3,
                 nav: false
             }
