@@ -172,7 +172,7 @@ section .title::after{
 /* home section styling */
 .home{
     display: flex;
-    background: url("images/banner.jpg") no-repeat center;
+    background: url(./images/istockphoto-1189542390-612x612.jpg) no-repeat center;
     height: 100vh;
     color: #fff;
     min-height: 500px;
@@ -265,6 +265,11 @@ section .title::after{
 }
 
 /* services section styling */
+.services{
+    background-image: url('./images/istockphoto-1189542390-612x612.jpg') !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+}
 .services, .teams{
     color:#fff;
     background: #111;
@@ -280,7 +285,7 @@ section .title::after{
 }
 .services .serv-content .card{
     width: calc(33% - 20px);
-    background: #222;
+    background: rgba(255, 255, 255, 0.3);
     text-align: center;
     border-radius: 6px;
     padding: 50px 25px;
